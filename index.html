@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComercialCloud — PDV + Retaguarda multitenant para varejo (SaaS e White-label)</title>
+  <meta name="description" content="Plataforma de PDV e retaguarda na nuvem para o varejo: vendas no balcão, estoque, caixa, financeiro, emissão fiscal NFC-e e cobrança recorrente — pronta para operar como SaaS ou revender com a sua marca (white-label)." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --bg2: #13161e;
+      --bg3: #1a1e29;
+      --accent: #4f7cff;
+      --accent2: #7c9fff;
+      --text: #eaedf4;
+      --muted: #7a8099;
+      --border: rgba(255,255,255,0.07);
+      --danger: #ff5c5c;
+      --success: #3ecf8e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+    .container--narrow { max-width: 820px; }
+    .section { padding: 80px 0; }
+    .section--tight { padding: 48px 0; }
+    .section--alt { background: var(--bg2); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,15,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .brand { font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: var(--text); }
+    nav .brand span { color: var(--accent2); }
+    nav .nav-links { display: flex; gap: 24px; align-items: center; }
+    nav .nav-links a { color: var(--muted); font-size: 14px; }
+    nav .nav-links a:hover { color: var(--text); text-decoration: none; }
+    nav .cta-nav {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity .15s;
+    }
+    nav .cta-nav:hover { opacity: .88; text-decoration: none; }
+    @media (max-width: 720px) { nav .nav-links a:not(.cta-nav) { display: none; } }
+
+    .hero { padding: 90px 0 64px; text-align: center; }
+    .hero .eyebrow {
+      display: inline-block;
+      background: rgba(79,124,255,0.12);
+      color: var(--accent2);
+      border: 1px solid rgba(79,124,255,0.25);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #4f7cff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .sub {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 660px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .hero .sub strong { color: var(--text); }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 15px 36px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      transition: transform .15s, opacity .15s;
+    }
+    .cta-primary:hover { opacity: .9; transform: translateY(-1px); text-decoration: none; }
+    .cta-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: border-color .15s;
+    }
+    .cta-secondary:hover { border-color: var(--accent2); text-decoration: none; }
+
+    .shot {
+      margin: 56px auto 0;
+      max-width: 920px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    }
+    .shot img { width: 100%; display: block; }
+    .shot-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px; }
+
+    h2.section-title {
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .section-intro { color: var(--muted); text-align: center; max-width: 640px; margin: 0 auto 48px; font-size: 17px; }
+
+    .grid { display: grid; gap: 18px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 760px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+    }
+    .card h3 { font-size: 17px; color: #fff; margin-bottom: 8px; font-weight: 700; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .card .ico { font-size: 22px; margin-bottom: 14px; display: block; }
+
+    .pain { background: var(--bg2); }
+    .pain ul { list-style: none; max-width: 720px; margin: 0 auto; }
+    .pain li {
+      padding: 14px 0 14px 34px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .pain li::before { content: "✕"; color: var(--danger); position: absolute; left: 0; font-weight: 700; }
+
+    .offer {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .offer--featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .offer .tag { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); font-weight: 700; margin-bottom: 8px; }
+    .offer h3 { font-size: 22px; color: #fff; margin-bottom: 6px; }
+    .offer .desc { color: var(--muted); font-size: 15px; margin-bottom: 18px; }
+    .offer .price { font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .offer .price small { font-size: 14px; color: var(--muted); font-weight: 500; }
+    .offer .price-note { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .offer ul { list-style: none; margin-bottom: 24px; flex: 1; }
+    .offer li { padding: 8px 0 8px 26px; position: relative; color: var(--text); font-size: 15px; }
+    .offer li::before { content: "✓"; color: var(--success); position: absolute; left: 0; font-weight: 700; }
+
+    .steps { counter-reset: step; max-width: 760px; margin: 0 auto; }
+    .step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .step .n {
+      counter-increment: step;
+      flex: 0 0 36px; height: 36px; width: 36px;
+      background: rgba(79,124,255,0.14); color: var(--accent2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+    }
+    .step .n::before { content: counter(step); }
+    .step h4 { color: #fff; font-size: 16px; margin-bottom: 4px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    .faq details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+      background: var(--bg2);
+    }
+    .faq summary { cursor: pointer; font-weight: 600; color: var(--text); font-size: 16px; list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; float: right; color: var(--accent2); font-weight: 700; }
+    .faq details[open] summary::after { content: "−"; }
+    .faq p { color: var(--muted); margin-top: 12px; font-size: 15px; }
+
+    footer { border-top: 1px solid var(--border); padding: 48px 0; text-align: center; color: var(--muted); font-size: 14px; }
+    footer .brand { color: var(--text); font-weight: 700; }
+
+    .badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .badge { font-size: 12px; color: var(--muted); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Comercial<span>Cloud</span></div>
+    <div class="nav-links">
+      <a href="#recursos">Recursos</a>
+      <a href="#ofertas">Planos</a>
+      <a href="#whitelabel">White-label</a>
+      <a href="#faq">FAQ</a>
+      <a class="cta-nav" href="mailto:contato@exemplo.com?subject=Quero%20conhecer%20o%20ComercialCloud">Falar com vendas</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow">PDV + Retaguarda na nuvem</span>
+      <h1>O balcão e a retaguarda da sua loja <em>num só sistema</em></h1>
+      <p class="sub">
+        Vendas no PDV, controle de estoque, caixa, financeiro, <strong>emissão fiscal NFC-e</strong> e
+        <strong>cobrança recorrente</strong> — multitenant, pronto para operar como SaaS ou
+        <strong>revender com a sua marca</strong>.
+      </p>
+      <div class="cta-row">
+        <a class="cta-primary" href="mailto:contato@exemplo.com?subject=Teste%20gratuito%20do%20ComercialCloud">Começar teste grátis</a>
+        <a class="cta-secondary" href="#whitelabel">Quero revender (white-label)</a>
+      </div>
+      <div class="shot">
+        <img src="assets/pdv.png" alt="Tela do PDV do ComercialCloud com carrinho, total e formas de pagamento" />
+      </div>
+      <p class="shot-caption">PDV: busca por código de barras, carrinho, múltiplas formas de pagamento e finalização com NFC-e.</p>
+    </div>
+  </header>
+
+  <!-- DOR -->
+  <section class="section pain">
+    <div class="container container--narrow">
+      <h2 class="section-title">Operar o varejo com sistemas soltos custa caro</h2>
+      <p class="section-intro">Planilha de estoque, caderno de fiado, PDV que não emite nota, mensalidade que ninguém controla. O dia a dia vira retrabalho e furo de caixa.</p>
+      <ul>
+        <li>PDV separado do controle de estoque — o que vende não baixa do estoque.</li>
+        <li>Sem emissão fiscal: parte do varejo formal fica fora do alcance.</li>
+        <li>Caixa e financeiro em planilhas, sem fechamento confiável.</li>
+        <li>Sem dashboard: você descobre o resultado do mês quando já passou.</li>
+        <li>Quem quer revender PDV precisa construir tudo do zero.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section class="section" id="recursos">
+    <div class="container">
+      <h2 class="section-title">Um fluxo de varejo fechado, de ponta a ponta</h2>
+      <p class="section-intro">Produto → estoque → caixa → venda → fiscal → financeiro → dashboard. Tudo conectado, multitenant e com trilha de auditoria.</p>
+      <div class="grid grid-3">
+        <div class="card"><span class="ico">🛒</span><h3>PDV ágil</h3><p>Busca por código de barras, carrinho, desconto, múltiplas formas de pagamento e finalização rápida.</p></div>
+        <div class="card"><span class="ico">📦</span><h3>Estoque integrado</h3><p>Baixa automática na venda, estorno no cancelamento e alertas de estoque baixo.</p></div>
+        <div class="card"><span class="ico">💵</span><h3>Caixa e financeiro</h3><p>Abertura/fechamento de caixa com conferência e contas a receber (inclusive fiado).</p></div>
+        <div class="card"><span class="ico">🧾</span><h3>Emissão fiscal NFC-e</h3><p>Documento fiscal eletrônico na finalização, com processamento resiliente e provedor plugável.</p></div>
+        <div class="card"><span class="ico">🔁</span><h3>Cobrança recorrente</h3><p>Planos, assinatura por loja, faturas, retentativa em inadimplência e suspensão automática.</p></div>
+        <div class="card"><span class="ico">📊</span><h3>Dashboard</h3><p>Faturamento, ticket médio, vendas por dia e produtos mais vendidos em tempo real.</p></div>
+        <div class="card"><span class="ico">🏢</span><h3>Multitenant + RBAC</h3><p>Isolamento por loja, perfis Admin/Gerente/Caixa e onboarding self-service de novos tenants.</p></div>
+        <div class="card"><span class="ico">🔐</span><h3>Pronto para nuvem</h3><p>Health checks, métricas, correlation id e autenticação OIDC opcional (Keycloak).</p></div>
+        <div class="card"><span class="ico">🧩</span><h3>White-label</h3><p>Arquitetura limpa e documentada para você implantar com a sua marca e o seu canal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD SHOT -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Decisões com dados, não no escuro</h2>
+      <p class="section-intro">A retaguarda mostra o que importa do dia: faturamento, vendas, ticket médio, caixa, ranking de produtos e estoque crítico.</p>
+      <div class="shot">
+        <img src="assets/dashboard.png" alt="Dashboard de retaguarda do ComercialCloud com KPIs, gráfico de vendas e estoque baixo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Do cadastro à primeira venda em minutos</h2>
+      <p class="section-intro">Onboarding self-service: cadastre, escolha o plano e já comece a vender com dados de exemplo carregados.</p>
+      <div class="steps">
+        <div class="step"><div class="n"></div><div><h4>Crie a conta</h4><p>Cadastro da loja e do administrador em uma chamada — sem instalar nada.</p></div></div>
+        <div class="step"><div class="n"></div><div><h4>Escolha o plano</h4><p>Comece em teste grátis (trial) ou já com plano ativo. A cobrança recorrente cuida das faturas.</p></div></div>
+        <div class="step"><div class="n"></div><div><h4>Explore com dados demo</h4><p>Produtos e estoque de exemplo já vêm prontos para você testar o PDV imediatamente.</p></div></div>
+        <div class="step"><div class="n"></div><div><h4>Configure o fiscal</h4><p>Informe os dados do emitente e habilite a NFC-e por loja quando estiver pronto.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTAS -->
+  <section class="section section--alt" id="ofertas">
+    <div class="container">
+      <h2 class="section-title">Planos</h2>
+      <p class="section-intro">Mensalidade por loja para quem quer operar direto. Quem quer revender, veja a opção white-label abaixo.</p>
+      <div class="grid grid-3">
+        <div class="offer">
+          <div class="tag">Essencial</div>
+          <h3>R$ 99<small>/mês por loja</small></h3>
+          <p class="price-note">PDV + estoque + caixa</p>
+          <ul>
+            <li>PDV e controle de estoque</li>
+            <li>Abertura/fechamento de caixa</li>
+            <li>Dashboard básico</li>
+            <li>1 loja, usuários ilimitados</li>
+          </ul>
+          <a class="cta-secondary" href="mailto:contato@exemplo.com?subject=Plano%20Essencial%20-%20ComercialCloud">Começar</a>
+        </div>
+        <div class="offer offer--featured">
+          <div class="tag">Pro · mais popular</div>
+          <h3>R$ 199<small>/mês por loja</small></h3>
+          <p class="price-note">Essencial + fiscal + financeiro</p>
+          <ul>
+            <li>Tudo do Essencial</li>
+            <li>Emissão fiscal NFC-e</li>
+            <li>Financeiro e contas a receber</li>
+            <li>Dashboard completo</li>
+          </ul>
+          <a class="cta-primary" href="mailto:contato@exemplo.com?subject=Plano%20Pro%20-%20ComercialCloud">Testar grátis</a>
+        </div>
+        <div class="offer">
+          <div class="tag">Premium</div>
+          <h3>R$ 349<small>/mês por loja</small></h3>
+          <p class="price-note">Pro + multi-loja + prioridade</p>
+          <ul>
+            <li>Tudo do Pro</li>
+            <li>Múltiplas lojas</li>
+            <li>Suporte prioritário</li>
+            <li>Onboarding assistido</li>
+          </ul>
+          <a class="cta-secondary" href="mailto:contato@exemplo.com?subject=Plano%20Premium%20-%20ComercialCloud">Falar com vendas</a>
+        </div>
+      </div>
+      <p class="shot-caption" style="margin-top:20px">Setup/implantação inicial opcional: R$ 1.500 a R$ 5.000 conforme escopo.</p>
+    </div>
+  </section>
+
+  <!-- WHITE-LABEL -->
+  <section class="section" id="whitelabel">
+    <div class="container">
+      <h2 class="section-title">Revenda com a sua marca</h2>
+      <p class="section-intro">Para software houses, contabilidades e franquias que já têm canal no varejo: licencie a base, coloque a sua marca e cobre setup + manutenção dos seus clientes.</p>
+      <div class="grid grid-2">
+        <div class="offer">
+          <div class="tag">Licença White-label</div>
+          <h3>R$ 15.000 a R$ 40.000</h3>
+          <p class="price-note">Uso comercial + branding</p>
+          <ul>
+            <li>Plataforma multitenant pronta para revenda</li>
+            <li>Branding (nome, cores, logo)</li>
+            <li>Implantação, documentação e treinamento</li>
+            <li>Provedor fiscal e gateway de pagamento plugáveis</li>
+          </ul>
+          <a class="cta-primary" href="mailto:contato@exemplo.com?subject=Licen%C3%A7a%20White-label%20-%20ComercialCloud">Quero a proposta</a>
+        </div>
+        <div class="offer">
+          <div class="tag">Manutenção e evolução</div>
+          <h3>R$ 2.000 a R$ 6.000<small>/mês</small></h3>
+          <p class="price-note">Sustentação do white-label</p>
+          <ul>
+            <li>Correções e atualizações</li>
+            <li>Novas features priorizadas</li>
+            <li>Acompanhamento técnico</li>
+            <li>SLA de suporte definido em contrato</li>
+          </ul>
+          <a class="cta-secondary" href="mailto:contato@exemplo.com?subject=Manuten%C3%A7%C3%A3o%20White-label%20-%20ComercialCloud">Conversar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PÚBLICO -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Para quem é</h2>
+      <div class="grid grid-3">
+        <div class="card"><h3>Pequenos e médios comércios</h3><p>Mercadinhos, conveniências e lojas que querem unificar balcão e retaguarda por uma mensalidade.</p></div>
+        <div class="card"><h3>Software houses e contabilidades</h3><p>Quem quer um PDV próprio para revender sem construir do zero.</p></div>
+        <div class="card"><h3>Franquias pequenas</h3><p>Padronização do PDV entre unidades, com isolamento por loja.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container container--narrow">
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <details><summary>O sistema emite nota fiscal?</summary><p>Sim. Há emissão de NFC-e na finalização da venda, com processamento resiliente (assíncrono) e provedor fiscal plugável. Em ambiente de avaliação roda em modo sandbox; em produção conecta-se ao provedor fiscal com os dados do emitente da loja.</p></details>
+      <details><summary>Como funciona a cobrança das lojas?</summary><p>Cobrança recorrente nativa: planos, assinatura por loja, geração de faturas, retentativa automática em caso de inadimplência e suspensão do acesso até a regularização — com endpoints de billing sempre acessíveis para pagar.</p></details>
+      <details><summary>Consigo revender com a minha marca?</summary><p>Sim. É a opção white-label: licenciamos a base para uso comercial, aplicamos o seu branding e entregamos com documentação e treinamento. Provedor fiscal e gateway de pagamento são plugáveis.</p></details>
+      <details><summary>Preciso instalar algo para testar?</summary><p>Não. O onboarding é self-service: você cria a conta, escolhe o plano e já começa com dados de exemplo carregados para testar o PDV.</p></details>
+      <details><summary>É multi-loja?</summary><p>Sim. A arquitetura é multitenant com isolamento por loja e perfis de acesso (Admin/Gerente/Caixa). O plano Premium habilita múltiplas lojas.</p></details>
+      <details><summary>Qual o suporte e SLA?</summary><p>A política de suporte e os tempos de resposta por plano estão descritos no documento de SLA. No white-label, o SLA é definido em contrato com o parceiro.</p></details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" style="text-align:center">
+    <div class="container container--narrow">
+      <h2 class="section-title">Pronto para vender melhor?</h2>
+      <p class="section-intro">Comece um teste grátis ou peça a proposta de white-label.</p>
+      <div class="cta-row">
+        <a class="cta-primary" href="mailto:contato@exemplo.com?subject=Teste%20gratuito%20do%20ComercialCloud">Começar teste grátis</a>
+        <a class="cta-secondary" href="mailto:contato@exemplo.com?subject=Proposta%20White-label%20-%20ComercialCloud">Pedir proposta white-label</a>
+      </div>
+      <div class="badges">
+        <span class="badge">PDV + Retaguarda</span>
+        <span class="badge">NFC-e</span>
+        <span class="badge">Cobrança recorrente</span>
+        <span class="badge">Multitenant</span>
+        <span class="badge">White-label</span>
+      </div>
+      <!-- TODO: trocar contato@exemplo.com pelo e-mail/checkout reais e (opcional) link de demo público. -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><span class="brand">ComercialCloud</span> — PDV + retaguarda multitenant para o varejo.</p>
+      <p style="margin-top:8px">Vendas no balcão, estoque, caixa, financeiro, fiscal e cobrança recorrente num só lugar.</p>
+    </div>
+  </footer>
+</body>
+</html>
