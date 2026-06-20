@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade — ComercialCloud</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #1a1a1a; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.1rem; margin-top: 2rem; }
+    a { color: #4f7cff; }
+    .muted { color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <p class="muted"><a href="index.html">← Voltar</a></p>
+  <h1>Política de Privacidade</h1>
+  <p class="muted">Última atualização: junho de 2026 · Conforme LGPD (Lei 13.709/2018)</p>
+
+  <p>Esta política descreve como tratamos dados pessoais no ComercialCloud.</p>
+
+  <h2>1. Controlador</h2>
+  <p>O controlador dos dados é o operador do serviço ComercialCloud. Contato do encarregado (DPO): <a id="contact-email" href="mailto:contato@exemplo.com">contato@exemplo.com</a>.</p>
+
+  <h2>2. Dados coletados</h2>
+  <ul>
+    <li>Cadastro: nome, e-mail, CNPJ/CPF da loja, telefone (quando informado)</li>
+    <li>Operação: vendas, clientes, produtos, movimentações de caixa e financeiro</li>
+    <li>Técnicos: logs de acesso, IP, identificadores de sessão e correlation id</li>
+    <li>Pagamentos: dados processados pelo gateway Asaas (não armazenamos dados completos de cartão)</li>
+  </ul>
+
+  <h2>3. Finalidades</h2>
+  <p>Prestação do SaaS, cobrança, suporte, segurança, cumprimento legal e emissão fiscal quando habilitada.</p>
+
+  <h2>4. Compartilhamento</h2>
+  <p>Podemos compartilhar dados com provedores necessários à operação: hospedagem, Asaas (pagamentos), Focus NFe (documentos fiscais), Keycloak (autenticação) e autoridades quando exigido por lei.</p>
+
+  <h2>5. Retenção e segurança</h2>
+  <p>Os dados são mantidos enquanto a conta estiver ativa e pelo prazo legal aplicável. Aplicamos isolamento multitenant, HTTPS em produção e backups periódicos do banco de dados.</p>
+
+  <h2>6. Direitos do titular</h2>
+  <p>Você pode solicitar acesso, correção, exclusão ou portabilidade dos seus dados pessoais, bem como revogar consentimentos quando aplicável, pelo e-mail de contato acima.</p>
+
+  <h2>7. Cookies</h2>
+  <p>O frontend utiliza cookies e armazenamento local para sessão e preferências. A landing pode usar ferramentas de analytics conforme configuração do operador.</p>
+
+  <h2>8. Alterações</h2>
+  <p>Esta política pode ser atualizada. A data de revisão será indicada no topo da página.</p>
+
+  <script>
+    var cfg = window.COMERCIALCLOUD_CONFIG || {};
+    var email = cfg.contactEmail || 'contato@exemplo.com';
+    var el = document.getElementById('contact-email');
+    if (el) { el.href = 'mailto:' + email; el.textContent = email; }
+  </script>
+</body>
+</html>
