@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Mockup Dashboard ComercialCloud">
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <rect x="0" y="0" width="240" height="720" fill="#0f172a"/>
+  <text x="32" y="64" fill="#93c5fd" font-family="system-ui,sans-serif" font-size="22" font-weight="700">ComercialCloud</text>
+  <rect x="280" y="40" width="880" height="120" rx="12" fill="#fff" stroke="#e2e8f0"/>
+  <text x="312" y="88" fill="#64748b" font-family="system-ui,sans-serif" font-size="16">Faturamento do dia</text>
+  <text x="312" y="128" fill="#0f172a" font-family="system-ui,sans-serif" font-size="36" font-weight="700">R$ 3.842,50</text>
+  <rect x="280" y="184" width="420" height="220" rx="12" fill="#fff" stroke="#e2e8f0"/>
+  <text x="312" y="224" fill="#64748b" font-family="system-ui,sans-serif" font-size="16">Vendas do dia</text>
+  <text x="312" y="272" fill="#0f172a" font-family="system-ui,sans-serif" font-size="32" font-weight="700">128</text>
+  <rect x="740" y="184" width="420" height="220" rx="12" fill="#fff" stroke="#e2e8f0"/>
+  <text x="772" y="224" fill="#64748b" font-family="system-ui,sans-serif" font-size="16">Ticket médio</text>
+  <text x="772" y="272" fill="#0f172a" font-family="system-ui,sans-serif" font-size="32" font-weight="700">R$ 30,02</text>
+  <rect x="280" y="428" width="880" height="252" rx="12" fill="#fff" stroke="#e2e8f0"/>
+  <text x="312" y="468" fill="#64748b" font-family="system-ui,sans-serif" font-size="16">Estoque baixo</text>
+  <text x="312" y="520" fill="#0f172a" font-family="system-ui,sans-serif" font-size="20">Leite Integral 1L · 12 un.</text>
+  <text x="312" y="560" fill="#0f172a" font-family="system-ui,sans-serif" font-size="20">Pão de Forma · 8 un.</text>
+</svg>

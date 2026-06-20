@@ -267,6 +267,10 @@
 
     gtag('config', 'AW-1025048472');
   </script>
+  <script>
+    // Altere para a URL pública do app SaaS em produção
+    window.COMERCIALCLOUD_TRIAL_URL = 'http://localhost:3000/cadastro';
+  </script>
 </head>
 <body>
   <nav>
@@ -276,7 +280,8 @@
       <a href="#ofertas">Planos</a>
       <a href="#whitelabel">White-label</a>
       <a href="#faq">FAQ</a>
-      <a class="cta-nav" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar agora — R$1.997 →</a>
+      <a class="cta-nav" id="nav-trial" href="http://localhost:3000/cadastro">Testar grátis 14 dias</a>
+      <a class="cta-nav" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar — R$1.997</a>
     </div>
   </nav>
 
@@ -290,11 +295,12 @@
         <strong>revender com a sua marca</strong>.
       </p>
       <div class="cta-row">
-        <a class="cta-primary" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar agora — R$1.997 →</a>
+        <a class="cta-primary" id="hero-trial" href="http://localhost:3000/cadastro">Testar grátis 14 dias →</a>
+        <a class="cta-primary" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar boilerplate — R$1.997</a>
         <a class="cta-secondary" href="#whitelabel">Quero revender (white-label)</a>
       </div>
       <div class="shot">
-        <img src="assets/pdv.png" alt="Tela do PDV do ComercialCloud com carrinho, total e formas de pagamento" />
+        <img src="assets/pdv.svg" alt="Tela do PDV do ComercialCloud com carrinho, total e formas de pagamento" />
       </div>
       <p class="shot-caption">PDV: busca por código de barras, carrinho, múltiplas formas de pagamento e finalização com NFC-e.</p>
     </div>
@@ -340,7 +346,7 @@
       <h2 class="section-title">Decisões com dados, não no escuro</h2>
       <p class="section-intro">A retaguarda mostra o que importa do dia: faturamento, vendas, ticket médio, caixa, ranking de produtos e estoque crítico.</p>
       <div class="shot">
-        <img src="assets/dashboard.png" alt="Dashboard de retaguarda do ComercialCloud com KPIs, gráfico de vendas e estoque baixo" />
+        <img src="assets/dashboard.svg" alt="Dashboard de retaguarda do ComercialCloud com KPIs, gráfico de vendas e estoque baixo" />
       </div>
     </div>
   </section>
@@ -451,7 +457,8 @@
       <h2 class="section-title">Pronto para construir seu SaaS de varejo?</h2>
       <p class="section-intro">Adquira o boilerplate completo por R$&nbsp;1.997 e economize meses de desenvolvimento.</p>
       <div class="cta-row">
-        <a class="cta-primary" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar agora — R$1.997 →</a>
+        <a class="cta-primary" id="footer-trial" href="http://localhost:3000/cadastro">Testar grátis 14 dias →</a>
+        <a class="cta-primary" href="https://pay.kiwify.com.br/XOuVLZc" target="_blank" rel="noopener">Comprar boilerplate — R$1.997</a>
       </div>
       <div class="badges">
         <span class="badge">PDV + Retaguarda</span>
@@ -469,5 +476,14 @@
       <p style="margin-top:8px">Vendas no balcão, estoque, caixa, financeiro, fiscal e cobrança recorrente num só lugar.</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var url = window.COMERCIALCLOUD_TRIAL_URL || 'http://localhost:3000/cadastro';
+      ['nav-trial', 'hero-trial', 'footer-trial'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = url;
+      });
+    })();
+  </script>
 </body>
 </html>
