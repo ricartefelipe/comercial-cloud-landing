@@ -267,7 +267,10 @@
 
     gtag('config', 'AW-1025048472');
   </script>
-  <script src="config.js"></script>
+  <script>
+    // Altere para a URL pública do app SaaS em produção
+    window.COMERCIALCLOUD_TRIAL_URL = 'http://localhost:3000/cadastro';
+  </script>
 </head>
 <body>
   <nav>
@@ -471,27 +474,15 @@
     <div class="container">
       <p><span class="brand">ComercialCloud</span> — PDV + retaguarda multitenant para o varejo.</p>
       <p style="margin-top:8px">Vendas no balcão, estoque, caixa, financeiro, fiscal e cobrança recorrente num só lugar.</p>
-      <p style="margin-top:16px;font-size:14px;color:var(--muted)">
-        <a href="termos.html">Termos de uso</a> ·
-        <a href="privacidade.html">Privacidade (LGPD)</a> ·
-        <a id="footer-contact" href="mailto:contato@exemplo.com">contato@exemplo.com</a>
-      </p>
     </div>
   </footer>
   <script>
     (function () {
-      var cfg = window.COMERCIALCLOUD_CONFIG || {};
-      var url = cfg.trialUrl || 'http://localhost:3000/cadastro';
-      var email = cfg.contactEmail || 'contato@exemplo.com';
+      var url = window.COMERCIALCLOUD_TRIAL_URL || 'http://localhost:3000/cadastro';
       ['nav-trial', 'hero-trial', 'footer-trial'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.href = url;
       });
-      var contact = document.getElementById('footer-contact');
-      if (contact) {
-        contact.href = 'mailto:' + email;
-        contact.textContent = email;
-      }
     })();
   </script>
 </body>
